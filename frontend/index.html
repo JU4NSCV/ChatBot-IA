@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DilemaBot</title>
+  <meta name="description" content="Chatbot educativo sobre dilemas éticos de la IA en la comunicación y el periodismo, con respuestas citadas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="DilemaBot, inicio">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="3" y="6" width="26" height="18" rx="6" fill="none" stroke="currentColor" stroke-width="2.2"/>
+        <path d="M10 24v5l5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M11 15h4M17 12l4 6M21 12l-4 6" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span>DilemaBot</span>
+    </a>
+    <span id="estado" class="status" role="status">Comprobando modelo…</span>
+  </header>
+
+  <main class="layout">
+    <section class="thread" id="hilo" aria-live="polite" aria-label="Conversación">
+      <div class="intro" id="intro">
+        <p class="label">01 · Ética, IA y comunicación</p>
+        <h1>Pregunta sobre un dilema ético en periodismo</h1>
+        <p class="lead">Respondo solo con el corpus validado del proyecto y cito cada fuente. Si no tengo evidencia, te lo digo.</p>
+        <div class="suggestions" id="sugerencias">
+          <button type="button" class="chip-btn" data-q="¿Debo avisar a la audiencia si una nota se redactó con IA?"><span>A · Concepto</span>¿Debo avisar si una nota se redactó con IA?</button>
+          <button type="button" class="chip-btn" data-q="¿Qué protege la Constitución argentina sobre el secreto de las fuentes periodísticas?"><span>B · Norma</span>¿Qué protege la Constitución sobre el secreto de las fuentes?</button>
+          <button type="button" class="chip-btn" data-q="Un medio quiere entrenar un modelo de IA con notas firmadas por colaboradores. ¿Qué dilemas de autoría plantea?"><span>C · Dilema</span>Entrenar IA con notas de colaboradores: ¿qué dilemas de autoría plantea?</button>
+        </div>
+      </div>
+    </section>
+
+    <form class="console" id="formulario" autocomplete="off">
+      <label for="mensaje" class="sr-only">Escribe tu pregunta</label>
+      <textarea id="mensaje" name="mensaje" rows="1" maxlength="2000" placeholder="Escribe tu pregunta sobre ética, IA y periodismo…" required></textarea>
+      <button type="submit" id="enviar" class="btn-primary">Enviar</button>
+    </form>
+    <p class="footnote">DilemaBot es un prototipo educativo. Verifica las fuentes citadas antes de tomar decisiones. La conversación no se guarda en el servidor.</p>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

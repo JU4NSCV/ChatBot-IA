@@ -1,0 +1,29 @@
+# Ollama en Docker para DilemaBot.
+#
+#   docker compose up -d                                      # arrancar
+#   docker compose exec ollama ollama pull qwen2.5:7b         # descargar el modelo de respuestas
+#   docker compose exec ollama ollama pull bge-m3             # descargar el modelo de embeddings
+#   docker compose down                                       # detener (los modelos se conservan)
+#
+# La app (uvicorn) corre fuera del contenedor y se conecta a http://localhost:11434.
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: dilemabot-ollama
+    ports:
+      - "127.0.0.1:11434:11434"   # solo accesible desde este equipo
+    volumes:
+      - ollama-modelos:/root/.ollama
+    environment:
+      OLLAMA_KEEP_ALIVE: 10m      # libera la RAM del modelo tras 10 min sin uso
+      OLLAMA_NUM_PARALLEL: 1      # una consulta a la vez: menos memoria en CPU
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  ollama-modelos:
