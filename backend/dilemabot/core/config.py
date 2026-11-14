@@ -25,7 +25,9 @@ def _load_dotenv(path: Path) -> None:
         if not line or line.startswith("#") or "=" not in line:
             continue
         key, value = line.split("=", 1)
-        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
+        value = value.strip().strip('"').strip("'")
+        if value:  # una variable vacía (p. ej. ANTHROPIC_API_KEY=) se trata como no definida
+            os.environ.setdefault(key.strip(), value)
 
 
 def _env(name: str, default: str) -> str:
@@ -42,6 +44,10 @@ class Settings:
     llm_num_ctx: int = 8192
     llm_timeout_s: float = 180.0
     ollama_num_thread: int = 0  # 0 = lo decide Ollama
+
+    claude_model: str = "claude-opus-5-5"
+    claude_effort: str = "medium"  # low | medium | high | xhigh | max
+    claude_max_tokens: int = 64000
 
     retrieval_top_k: int = 4
     retrieval_max_per_source: int = 2
@@ -66,6 +72,9 @@ def load_settings() -> Settings:
         llm_num_ctx=int(_env("LLM_NUM_CTX", "8192")),
         llm_timeout_s=float(_env("LLM_TIMEOUT_S", "180")),
         ollama_num_thread=int(_env("OLLAMA_NUM_THREAD", "0")),
+        claude_model=_env("CLAUDE_MODEL", "claude-opus-5-5"),
+        claude_effort=_env("CLAUDE_EFFORT", "medium"),
+        claude_max_tokens=int(_env("CLAUDE_MAX_TOKENS", "64000")),
         retrieval_top_k=int(_env("RETRIEVAL_TOP_K", "4")),
         retrieval_max_per_source=int(_env("RETRIEVAL_MAX_PER_SOURCE", "2")),
         evidence_min_bm25=float(_env("EVIDENCE_MIN_BM25", "7.0")),

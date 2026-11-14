@@ -7,7 +7,7 @@
 | Plan | Estado | Detalle |
 |---|---|---|
 | Esqueleto FastAPI (S6–S7) | ✅ | `GET /api/salud`, `GET /api/fuentes`, `POST /api/chat` con respuesta en streaming (SSE) |
-| Proveedor LLM intercambiable | ✅ | Interfaz `LLMProvider`; implementación Ollama (chat en streaming + embeddings). Se elige con `LLM_PROVIDER` |
+| Proveedor LLM intercambiable | ✅ | Interfaz `LLMProvider`; implementaciones Ollama (chat + embeddings) y Claude (chat con el SDK `anthropic`; embeddings vía Ollama). Se elige con `LLM_PROVIDER` |
 | Ingesta y segmentación (S8) | ✅ | 8 documentos → 1.172 fragmentos. Cada artículo es un fragmento; los artículos de decretos reglamentarios llevan el decreto en la cita. Se descartan los «Sin reglamentar» |
 | Registro de fuentes | ✅ | `knowledge/fuentes.yaml` con país, enlace, PDF, vigencia, nota de vigencia y motivo de inclusión |
 | Búsqueda híbrida (S8) | ✅ | BM25 con pares de palabras + vectores `bge-m3` (fusión RRF). Refuerza la fuente y el artículo nombrados («art. 43 de la Constitución»). Máximo 2 fragmentos por fuente para que la Ley 26.522 no domine |
@@ -17,7 +17,7 @@
 | Advertencias de vigencia (S10, adelantado) | ✅ | El prompt incluye la nota de vigencia; la interfaz marca «Modificada» / «Vigencia por verificar» |
 | Memoria conversacional (S10, parcial) | 🟡 | Se envían los últimos 6 turnos. Las preguntas de seguimiento («¿y eso?») se buscan junto a la anterior; falta la reescritura con el modelo |
 | Chat web básico (S8) | ✅ | Tema oscuro según `docs/diseno/DESIGN.md`, citas clicables, fuentes con enlace original y PDF |
-| Pruebas automáticas | ✅ | 30 pruebas con pytest (segmentación, búsqueda, flujo del chat con un LLM simulado, API) |
+| Pruebas automáticas | ✅ | 36 pruebas con pytest (segmentación, búsqueda, flujo del chat con un LLM simulado, API) |
 
 ## Decisiones tomadas al implementar
 
@@ -32,5 +32,5 @@
 
 1. **Latencia:** ~40 s hasta el primer token sigue siendo mucho para la demo. Opciones: comparar `qwen2.5:3b` (S7), fragmentos más cortos, o un proveedor externo para la demo.
 2. **Calidad de las respuestas:** las primeras pruebas con `qwen2.5:7b` citan bien (p. ej. art. 29 de la Ley 11.723 para notas firmadas por colaboradores), pero falta el banco de 80–100 preguntas de S12.
-3. Clasificador de intención A/B/C (S9), banco de casos y fichas de principios (BC v1), reescritura de preguntas de seguimiento (S10), panel de evidencia lateral (S10), proveedor Claude (S11), landing con «Cómo funciona» (S11).
+3. Clasificador de intención A/B/C (S9), banco de casos y fichas de principios (BC v1), reescritura de preguntas de seguimiento (S10), panel de evidencia lateral (S10), landing con «Cómo funciona» (S11).
 4. Las fuentes web de Google Fonts se cargan por CDN; el plan pide servirlas localmente antes de la demo.

@@ -15,7 +15,7 @@ flowchart TB
         API["api/<br/>routes.py · schemas.py"]
         CHAT["chat/<br/>pipeline.py · guardrails.py · prompts.py"]
         RET["retrieval/<br/>index.py · text.py"]
-        LLM["llm/<br/>base.py · ollama.py"]
+        LLM["llm/<br/>base.py · ollama.py · claude.py"]
         ING["ingestion/<br/>segment.py · cli.py"]
         CORE["core/config.py"]
     end
@@ -24,6 +24,7 @@ flowchart TB
         IDX["indice/<br/>chunks.jsonl · embeddings.npy"]
     end
     OLL[("Ollama<br/>qwen2.5:7b · bge-m3")]
+    CLA[("API de Claude<br/>claude-opus-5-5")]
 
     UI -- "POST /api/chat (SSE)" --> API
     API --> CHAT
@@ -31,6 +32,7 @@ flowchart TB
     CHAT --> LLM
     RET --> IDX
     LLM --> OLL
+    LLM -. LLM_PROVIDER=claude .-> CLA
     ING --> SRC
     ING --> LLM
     ING --> IDX
@@ -42,7 +44,7 @@ flowchart TB
 | API | `backend/dilemabot/api/` | Endpoints HTTP, validación de entradas, Server-Sent Events | chat, retrieval |
 | Conversación | `backend/dilemabot/chat/` | Orquesta el flujo de una respuesta; control de evidencia y citas | retrieval, llm |
 | Recuperación | `backend/dilemabot/retrieval/` | Búsqueda híbrida BM25 + vectores, refuerzos, límite por fuente | índice |
-| Modelos | `backend/dilemabot/llm/` | Interfaz `LLMProvider`; implementación Ollama | servicio externo |
+| Modelos | `backend/dilemabot/llm/` | Interfaz `LLMProvider`; implementaciones Ollama y Claude | servicio externo |
 | Ingesta | `backend/dilemabot/ingestion/` | Segmenta el corpus por artículo y genera el índice | llm (embeddings) |
 | Evaluación | `backend/dilemabot/evaluation/` | Calibración de umbrales; luego, pruebas de respuestas (S12) | chat, retrieval, llm |
 | Configuración | `backend/dilemabot/core/` | Rutas y parámetros desde `.env` | — |
@@ -96,6 +98,20 @@ knowledge/
 ```
 
 Agregar una fuente = poner `documentos/<id>.md` (y su PDF), registrar la entrada en `fuentes.yaml` y ejecutar `dilemabot-ingest`. No se toca código.
+
+## Proveedores de modelos
+
+`LLM_PROVIDER` en `.env` elige quién redacta las respuestas. Los embeddings de la búsqueda siempre los calcula Ollama (`bge-m3`), porque la API de Claude no ofrece embeddings; así el índice y los umbrales calibrados sirven para ambos.
+
+| | `ollama` (por defecto) | `claude` |
+|---|---|---|
+| Dónde corre | Local (Docker), sin costo | API de Anthropic, pago por uso |
+| Modelo | `OLLAMA_MODEL` (`qwen2.5:7b`) | `CLAUDE_MODEL` (`claude-opus-5-5`) |
+| Velocidad medida | ~40 s al primer token en CPU | Segundos (depende de la red) |
+| Privacidad | Nada sale del equipo | La pregunta y los fragmentos se envían a Anthropic |
+| Configuración | `OLLAMA_NUM_THREAD`, `LLM_NUM_CTX` | `ANTHROPIC_API_KEY`, `CLAUDE_EFFORT` (`low`/`medium`/`high`) |
+
+Con Claude, si un filtro de seguridad declina una consulta, la API la reintenta automáticamente en otro modelo (*server-side fallbacks*); si todos declinan, el chat muestra «Claude declinó responder esta consulta».
 
 ## Decisiones
 

@@ -120,6 +120,8 @@ docker compose exec ollama ollama pull bge-m3       # embeddings para la búsque
 .venv/bin/uvicorn dilemabot.main:app --port 8000
 ```
 
+Para responder con Claude en vez de Ollama: `LLM_PROVIDER=claude` y `ANTHROPIC_API_KEY` en `.env` (ver [arquitectura](docs/arquitectura.md#proveedores-de-modelos)).
+
 Abrir <http://localhost:8000>. Sin Ollama la aplicación arranca igual, pero el chat muestra el error del modelo; `dilemabot-ingest --sin-vectores` genera un índice solo con búsqueda por palabras clave (BM25).
 
 | Comando | Para qué |
@@ -139,7 +141,7 @@ ChatBot-IA/
 │   ├── chat/                Orquestación: flujo de respuesta, prompts y control (evidencia, citas)
 │   ├── retrieval/           Búsqueda híbrida BM25 + vectores sobre el índice
 │   ├── ingestion/           Segmentación del corpus por artículo y generación del índice
-│   ├── llm/                 Proveedores de modelos intercambiables (Ollama; Claude en S11)
+│   ├── llm/                 Proveedores de modelos intercambiables: Ollama (local) y Claude (API)
 │   ├── evaluation/          Calibración y evaluación de respuestas
 │   └── core/                Configuración (.env)
 ├── backend/tests/           Pruebas con pytest
