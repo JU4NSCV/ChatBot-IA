@@ -4,7 +4,7 @@ Los ocho documentos forman el marco normativo y ético del periodismo argentino 
 
 ## Normas
 
-### [Constitución Nacional](1%20constitucion_de_la_nacion_argentina.md)
+### [Constitución Nacional](documentos/ar-constitucion.md)
 
 Es la norma suprema: establece un gobierno representativo, republicano y federal, y organiza los poderes del Estado, el Ministerio Público y las provincias. Para el periodismo importan sobre todo estos artículos:
 
@@ -13,7 +13,7 @@ Es la norma suprema: establece un gobierno representativo, republicano y federal
 - **Art. 43:** amparo y hábeas data; no puede afectarse el secreto de las fuentes periodísticas.
 - **Art. 75, incs. 19 y 22:** protección de la pluralidad cultural y de los espacios audiovisuales, y jerarquía constitucional de los tratados de derechos humanos.
 
-### [Ley 26.522, servicios audiovisuales](3%20servicios-de-comunicacion-audiovisual-ley-26522.md)
+### [Ley 26.522, servicios audiovisuales](documentos/ar-ley-26522.md)
 
 Regula la radio y la televisión como actividad de interés público, y busca diversidad y desconcentración. El volumen también incluye notas y cuatro decretos: promulgación, reglamentación y puesta en marcha de la autoridad de aplicación (AFSCA) y de Radio y Televisión Argentina.
 
@@ -27,7 +27,7 @@ Regula la radio y la televisión como actividad de interés público, y busca di
 - **Publicidad:** máximo de 14 minutos por hora en radio, 12 en TV abierta y 8 en la señal propia de TV paga.
 - **Sanciones:** van del llamado de atención a la caducidad de la licencia.
 
-### [Ley 11.723, propiedad intelectual](4%20ley11723.md)
+### [Ley 11.723, propiedad intelectual](documentos/ar-ley-11723.md)
 
 Protege obras científicas, literarias y artísticas, incluidos el software y las compilaciones de datos. Protege la expresión de las ideas, no las ideas en sí.
 
@@ -39,7 +39,7 @@ Protege obras científicas, literarias y artísticas, incluidos el software y la
   - Art. 31: comercializar un retrato requiere consentimiento, salvo fines culturales o hechos de interés público.
 - **Otros temas:** contratos de edición y representación, registro y depósito, y penas por defraudación. Los decretos anexos reglamentan la ley y cubren, entre otros temas, intérpretes, fonogramas, software y bases de datos.
 
-### [Ley 25.326, datos personales](6%20ley%20d%20eporteccion%20de%20datos%20arg_ley25326.md)
+### [Ley 25.326, datos personales](documentos/ar-ley-25326.md)
 
 Protege los datos personales en registros públicos y en privados destinados a dar informes, y no puede afectar las bases de datos ni las fuentes periodísticas (art. 1).
 
@@ -48,7 +48,7 @@ Protege los datos personales en registros públicos y en privados destinados a d
 - **Decisiones automatizadas (art. 20):** un fallo judicial o un acto administrativo que valore conductas no puede basarse solo en un perfil informatizado.
 - **Defensa:** sanciones administrativas y penales, y acción judicial de hábeas data.
 
-### [Ley 12.908, Estatuto del Periodista](7%20trabajo%20periodistico.md)
+### [Ley 12.908, Estatuto del Periodista](documentos/ar-ley-12908.md)
 
 Regula el trabajo de los periodistas profesionales en medios gráficos y agencias, y del personal de noticias en radio, cine y TV. Sus disposiciones son de orden público.
 
@@ -60,7 +60,7 @@ Regula el trabajo de los periodistas profesionales en medios gráficos y agencia
 
 ## Documentos sobre IA
 
-### [Informe de ADEPA 2026](11%20IA%20y-medios-argentinos-2026.md)
+### [Informe de ADEPA 2026](documentos/adepa-informe-ia-2026.md)
 
 Se basa en entrevistas a 20 medios y una encuesta a 124 periodistas, realizadas en marzo y abril de 2026. Su tesis es que el debate pasó de cómo adoptar la IA a cómo sostener económicamente al periodismo.
 
@@ -75,7 +75,7 @@ Se basa en entrevistas a 20 medios y una encuesta a 124 periodistas, realizadas 
 - **Reclamo:** ADEPA pide consentimiento, compensación y cita; el 77% de los periodistas apoya alguna regulación.
 - **Contexto:** compara medidas de Reino Unido, la UE, España, Australia y Canadá, y menciona la demanda de Editorial Perfil contra OpenAI y Microsoft.
 
-### [Guía de ADEPA para el uso de IA](12%20guia-para-el-uso-de-la-ia-en-los-medios-argentinos.md)
+### [Guía de ADEPA para el uso de IA](documentos/adepa-guia-ia.md)
 
 Propone ocho recomendaciones, y se presenta como punto de partida para el debate:
 
@@ -88,7 +88,7 @@ Propone ocho recomendaciones, y se presenta como punto de partida para el debate
 7. Respetar los derechos de autor, con autorización, remuneración, citas y enlaces.
 8. Evaluar y mejorar de forma continua, en colaboración con otras instituciones.
 
-### [Normas para el ejercicio periodístico](Normas%20argentinas%20ejercicio%20period%C3%ADstico.md)
+### [Normas para el ejercicio periodístico](documentos/ar-tabla-normas.md)
 
 Es una tabla de 13 entradas que vincula cada norma o guía con el tipo de medio, su alcance y un enlace. Funciona como índice del marco completo. Seis fuentes solo aparecen citadas y no están entre los PDF de la carpeta:
 

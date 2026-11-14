@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dilemabot"
+version = "0.1.0"
+description = "Chatbot RAG para analizar dilemas éticos de la IA en comunicación y periodismo (UTPL, Reto 2026)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "httpx>=0.27",
+    "pyyaml>=6.0",
+    "numpy>=2.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+dilemabot-ingest = "dilemabot.ingestion.cli:main"
+dilemabot-calibrar = "dilemabot.evaluation.calibrate:run"
+
+[tool.setuptools.packages.find]
+where = ["backend"]
+include = ["dilemabot*"]
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+pythonpath = ["backend"]
+filterwarnings = ["ignore:.*install `httpx2`"]

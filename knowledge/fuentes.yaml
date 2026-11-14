@@ -1,0 +1,133 @@
+# Registro de fuentes del corpus de DilemaBot.
+#
+# Campos:
+#   id               identificador estable (se usa en los fragmentos y en las citas)
+#   titulo           nombre completo del documento
+#   alias            formas de nombrarla en una pregunta (refuerza la búsqueda)
+#   titulo_corto     nombre que aparece en las citas («Ley 26.522, art. 45»)
+#   pais             país al que pertenece la norma o el documento
+#   tipo             constitucion | ley | guia | informe | tabla
+#   archivo          Markdown dentro de knowledge/documentos/ que se ingiere
+#   pdf              PDF original dentro de knowledge/pdf/ (se sirve en /corpus/pdf/)
+#   url              enlace a la fuente original
+#   vigencia         vigente | modificada | derogada | por_verificar
+#   nota_vigencia    advertencia que el bot muestra cuando la vigencia no es «vigente»
+#   motivo_inclusion por qué está en el corpus
+#   agregado_por     quién la incorporó
+
+fuentes:
+  - id: ar-constitucion
+    alias: ["constitución argentina", "constitución nacional", "constitución"]
+    titulo: Constitución de la Nación Argentina
+    titulo_corto: Constitución Nacional (Argentina)
+    pais: Argentina
+    tipo: constitucion
+    archivo: ar-constitucion.md
+    pdf: ar-constitucion.pdf
+    url: https://www.oas.org/dil/esp/constitucion_de_la_nacion_argentina.pdf
+    vigencia: vigente
+    nota_vigencia: ""
+    motivo_inclusion: Corpus inicial entregado por el equipo docente (libertad de expresión, autoría, secreto de las fuentes).
+    agregado_por: equipo docente
+
+  - id: ar-ley-26522
+    alias: ["ley 26.522", "ley 26522", "26.522", "ley de medios", "servicios de comunicación audiovisual"]
+    titulo: Ley 26.522 de Servicios de Comunicación Audiovisual y reglamentación
+    titulo_corto: Ley 26.522 (Argentina)
+    pais: Argentina
+    tipo: ley
+    archivo: ar-ley-26522.md
+    pdf: ar-ley-26522.pdf
+    url: https://bamuac.unc.edu.ar/sites/bamuac.unc.edu.ar/files/servicios-de-comunicacion-audiovisual-ley-26522.pdf
+    vigencia: modificada
+    nota_vigencia: >-
+      Esta ley fue modificada por el DNU 267/2015, que reemplazó a la AFSCA por el ENACOM y cambió
+      varios artículos (entre ellos los de concentración de licencias). Verifique el texto actualizado.
+    motivo_inclusion: Corpus inicial entregado por el equipo docente (pluralismo, regulación de medios audiovisuales).
+    agregado_por: equipo docente
+
+  - id: ar-ley-11723
+    alias: ["ley 11.723", "ley 11723", "11.723", "propiedad intelectual"]
+    titulo: Ley 11.723 de Propiedad Intelectual
+    titulo_corto: Ley 11.723 (Argentina)
+    pais: Argentina
+    tipo: ley
+    archivo: ar-ley-11723.md
+    pdf: ar-ley-11723.pdf
+    url: https://www.ign.gob.ar/descargas/biblioteca/ley11723.pdf
+    vigencia: vigente
+    nota_vigencia: ""
+    motivo_inclusion: Corpus inicial entregado por el equipo docente (autoría, uso de obras de terceros).
+    agregado_por: equipo docente
+
+  - id: ar-ley-25326
+    alias: ["ley 25.326", "ley 25326", "25.326", "protección de datos personales", "datos personales"]
+    titulo: Ley 25.326 de Protección de los Datos Personales
+    titulo_corto: Ley 25.326 (Argentina)
+    pais: Argentina
+    tipo: ley
+    archivo: ar-ley-25326.md
+    pdf: ar-ley-25326.pdf
+    url: https://www.oas.org/juridico/pdfs/arg_ley25326.pdf
+    vigencia: vigente
+    nota_vigencia: ""
+    motivo_inclusion: Corpus inicial entregado por el equipo docente (privacidad, decisiones automatizadas).
+    agregado_por: equipo docente
+
+  - id: ar-ley-12908
+    alias: ["ley 12.908", "ley 12908", "12.908", "estatuto del periodista"]
+    titulo: Estatuto del Periodista Profesional (Ley 12.908)
+    titulo_corto: Ley 12.908, Estatuto del Periodista (Argentina)
+    pais: Argentina
+    tipo: ley
+    archivo: ar-ley-12908.md
+    pdf: ar-ley-12908.pdf
+    url: https://www.argentina.gob.ar/normativa/nacional/norma-43608/actualizacion
+    vigencia: por_verificar
+    nota_vigencia: >-
+      El DNU 70/2023 derogó o modificó partes del Estatuto y su aplicación fue cuestionada judicialmente.
+      Verifique el estado actual del artículo citado.
+    motivo_inclusion: Corpus inicial entregado por el equipo docente (independencia y condiciones del trabajo periodístico).
+    agregado_por: equipo docente
+
+  - id: adepa-informe-ia-2026
+    alias: ["informe de adepa", "informe adepa", "adepa"]
+    titulo: "Inteligencia artificial y medios argentinos 2026: adopción, gobernanza y sostenibilidad (ADEPA)"
+    titulo_corto: Informe ADEPA «IA y medios argentinos 2026»
+    pais: Argentina
+    tipo: informe
+    archivo: adepa-informe-ia-2026.md
+    pdf: adepa-informe-ia-2026.pdf
+    url: https://adepa.org.ar/wp-content/uploads/2026/09/Inteligencia-artificial-y-medios-argentinos-2026-adopcion-gobernanza-y-sostenibilidad.pdf
+    vigencia: vigente
+    nota_vigencia: ""
+    motivo_inclusion: Corpus inicial entregado por el equipo docente (uso real de IA en redacciones).
+    agregado_por: equipo docente
+
+  - id: adepa-guia-ia
+    alias: ["guía de adepa", "guía adepa", "adepa"]
+    titulo: Guía para el uso de la IA en los medios argentinos (ADEPA)
+    titulo_corto: Guía ADEPA para el uso de la IA
+    pais: Argentina
+    tipo: guia
+    archivo: adepa-guia-ia.md
+    pdf: adepa-guia-ia.pdf
+    url: https://adepa.org.ar/recomendacionesusoiaenmedios/guia-para-el-uso-de-la-ia-en-los-medios-argentinos.pdf
+    vigencia: vigente
+    nota_vigencia: ""
+    motivo_inclusion: Corpus inicial entregado por el equipo docente (recomendaciones éticas para redacciones).
+    agregado_por: equipo docente
+
+  - id: ar-tabla-normas
+    alias: ["tabla de normas"]
+    titulo: Normas argentinas para el ejercicio periodístico (tabla resumen)
+    titulo_corto: Tabla de normas argentinas del ejercicio periodístico
+    pais: Argentina
+    tipo: tabla
+    archivo: ar-tabla-normas.md
+    pdf: ar-tabla-normas.pdf
+    url: ""
+    vigencia: vigente
+    nota_vigencia: ""
+    motivo_inclusion: Corpus inicial entregado por el equipo docente (relaciona cada tipo de medio con su marco legal).
+    agregado_por: equipo docente

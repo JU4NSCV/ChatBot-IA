@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+# Índice generado por `dilemabot-ingest`
+knowledge/indice/
+*.egg-info/
+.claude/
